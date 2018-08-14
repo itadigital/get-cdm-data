@@ -10,12 +10,12 @@ if ($curl_response === false) {
     die('error occured during curl exec. Additional info: ' . var_export($info));
 }
 curl_close($curl);
-$decoded = json_decode($curl_response);
+$decoded = json_decode($curl_response, true);
 if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
     die('error occured: ' . $decoded->response->errormessage);
 }
 echo 'response ok!<br/>';
-var_dump(json_decode($decoded, true));
+var_dump($decoded);
 
 //var_export($decoded->response);
 
