@@ -1,5 +1,6 @@
 <?php 
 header("Access-Control-Allow-Origin: *");
+header('Content-Type: application/json');
 
 $service_url = 'https://www.conferenceharvester.com/conferenceportal3/webservices/HarvesterJsonAPI.asp?apikey=IRtVaD2vPmx8&method=getAllExhibitorsWithBooth';
 $curl = curl_init($service_url);
@@ -11,7 +12,7 @@ if ($curl_response === false) {
     die('error occured during curl exec. Additional info: ' . var_export($info));
 }
 curl_close($curl);
-$decoded = json_decode($curl_response);
+$decoded = json_decode($curl_response,true);
 if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
     die('error occured: ' . $decoded->response->errormessage);
 }
