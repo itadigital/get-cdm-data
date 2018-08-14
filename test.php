@@ -1,4 +1,5 @@
 <?php 
+header("Access-Control-Allow-Origin: *");
 
 $service_url = 'https://www.conferenceharvester.com/conferenceportal3/webservices/HarvesterJsonAPI.asp?apikey=IRtVaD2vPmx8&method=getAllExhibitorsWithBooth';
 $curl = curl_init($service_url);
