@@ -17,6 +17,7 @@ if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') 
     die('error occured: ' . $decoded->response->errormessage);
 }
 
-var_dump($decoded);
+//var_dump($decoded);
+echo $curl_response;
 
 ?>
