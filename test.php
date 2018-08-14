@@ -17,7 +17,7 @@ if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') 
     die('error occured: ' . $decoded->response->errormessage);
 }
 
-//var_dump($decoded);
-echo $curl_response;
+var_dump($decoded["ExhibitorID"]);  
+//echo $curl_response;
 
 ?>
