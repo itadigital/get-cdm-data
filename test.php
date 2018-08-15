@@ -20,7 +20,8 @@ if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') 
 
 $sponsorItems = array();
 
-foreach ($curl_response as $item) {
+foreach ($decoded as $item) {
+    echo 'item: ';
     echo $item;
     echo '<br /><br />';
     $myObj = array(
