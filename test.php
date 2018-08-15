@@ -46,5 +46,7 @@ foreach ($decoded as $item) {
 
 //var_dump($decoded);  
 //echo $curl_response;
-var_dump($sponsorItems)
+//var_dump($sponsorItems);
+$json = json_decode($sponsorItems);
+print_r($json);
 ?>
