@@ -21,9 +21,7 @@ if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') 
 $sponsorItems = array();
 
 foreach ($decoded as $item) {
-    echo 'item: ';
-    echo var_dump($item);
-    echo '\n';
+    
     $myObj = array(
         "ExhibitorID" => $item['ExhibitorID'],
         "ExhibitorName" => $item['ExhibitorName'],
@@ -48,7 +46,6 @@ foreach ($decoded as $item) {
 
 //var_dump($decoded);  
 //echo $curl_response;
-echo '\n\n';
-var_dump($sponsorItems);
-
+//var_dump($sponsorItems);
+echo $sponsorItems;
 ?>
