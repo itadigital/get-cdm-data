@@ -14,7 +14,21 @@ if ($curl_response === false) {
 }
 curl_close($curl);
 
-array_multisort($curl_response['ExhibitorName'],SORT_ASC,$curl_response); 
+
+$sortArray = array(); 
+
+foreach($curl_response as $response){ 
+    foreach($response as $key=>$value){ 
+        if(!isset($sortArray[$key])){ 
+            $sortArray[$key] = array(); 
+        } 
+        $sortArray[$key][] = $value; 
+    } 
+} 
+
+
+array_multisort($sortArray['ExhibitorName'],SORT_DESC,$curl_response); 
+
 
 echo $curl_response;
 
