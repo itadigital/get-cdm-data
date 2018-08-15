@@ -6,12 +6,14 @@ $service_url = 'https://www.conferenceharvester.com/conferenceportal3/webservice
 $curl = curl_init($service_url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 $curl_response = curl_exec($curl);
+
 if ($curl_response === false) {
     $info = curl_getinfo($curl);
     curl_close($curl);
     die('error occured during curl exec. Additional info: ' . var_export($info));
 }
 curl_close($curl);
+echo $curl_response;
 $decoded = json_decode($curl_response,true);
 if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
     die('error occured: ' . $decoded->response->errormessage);
@@ -44,8 +46,5 @@ foreach ($decoded as $item) {
     
 }
 
-//var_dump($decoded);  
-//echo $curl_response;
-//var_dump($sponsorItems);
-echo json_encode($sponsorItems);
+//echo json_encode($sponsorItems);
 ?>
