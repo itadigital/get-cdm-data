@@ -13,7 +13,11 @@ if ($curl_response === false) {
     die('error occured during curl exec. Additional info: ' . var_export($info));
 }
 curl_close($curl);
+
+array_multisort($curl_response['ExhibitorName'],SORT_ASC,$curl_response); 
+
 echo $curl_response;
+
 $decoded = json_decode($curl_response,true);
 if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
     die('error occured: ' . $decoded->response->errormessage);
