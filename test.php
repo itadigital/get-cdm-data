@@ -17,7 +17,36 @@ if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') 
     die('error occured: ' . $decoded->response->errormessage);
 }
 
-var_dump($decoded["ExhibitorID"]);  
+
+$sponsorItems = array();
+
+foreach ($curl_response as $item) {
+    echo $item;
+    echo '<br /><br />';
+    $myObj = array(
+        "ExhibitorID" => $item['ExhibitorID'],
+        "ExhibitorName" => $item['ExhibitorName'],
+        "ExhibitorSponsorshipLevel" => $item['ExhibitorSponsorshipLevel'],
+        "ExhibitorLogo" => $item['ExhibitorLogo'],
+        "ExhibitorDescriptionLong" => $item['ExhibitorDescriptionLong'],
+        "ExhibitorBooth" => "",
+        "ExhibitorWebsite" => $item['ExhibitorWebsite'],
+        "ExhibitorFacebook" => $item['ExhibitorFacebook'],
+        "ExhibitorLinkedIn" => $item['ExhibitorLinkedIn'],
+        "ExhibitorTwitter" => $item['ExhibitorTwitter'] 
+    );
+    
+    
+    if($item['Booths'][0]){
+        $myObj['ExhibitorBooth'] = $item['Booths'][0]['BoothNumber'];
+    }
+
+    $sponsorItems[$item['ExhibitorID']] = $myObj;
+    
+}
+
+//var_dump($decoded);  
 //echo $curl_response;
+echo $sponsorItems;
 
 ?>
