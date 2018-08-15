@@ -19,13 +19,24 @@ if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') 
     die('error occured: ' . $decoded->response->errormessage);
 }
 
-function cmp($a, $b)
-{
-    return strcmp($a["ExhibitorName"], $b["ExhibitorName"]);
-}
-usort($decoded, "cmp");
 
-var_dump($decoded);
+$sortArray = array(); 
+
+foreach($decoded as $exh){ 
+    foreach($exh as $key=>$value){ 
+        if(!isset($sortArray[$key])){ 
+            $sortArray[$key] = array(); 
+        } 
+        $sortArray[$key][] = $value; 
+    } 
+} 
+
+$orderby = "ExhibitorName";
+
+array_multisort($sortArray[$orderby],SORT_DESC,$decoded); 
+
+var_dump($decoded); 
+
 
 $sponsorItems = array();
 
