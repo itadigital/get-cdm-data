@@ -14,11 +14,11 @@ if ($curl_response === false) {
 }
 curl_close($curl);
 
-function cmp($a, $b)
+foreach ($curl_response as $key => $row)
 {
-    return strcmp($a["ExhibitorName"], $b["ExhibitorName"]);
+    $vc_array_name[$key] = $row['ExhibitorName'];
 }
-usort($curl_response, "cmp");
+array_multisort($vc_array_name, SORT_ASC, $curl_response);
 
 echo $curl_response;
 
