@@ -14,21 +14,11 @@ if ($curl_response === false) {
 }
 curl_close($curl);
 
-
-$sortArray = array(); 
-
-foreach($curl_response as $response){ 
-    foreach($response as $key=>$value){ 
-        if(!isset($sortArray[$key])){ 
-            $sortArray[$key] = array(); 
-        } 
-        $sortArray[$key][] = $value; 
-    } 
-} 
-
-
-array_multisort($sortArray['ExhibitorName'],SORT_DESC,$curl_response); 
-
+function cmp($a, $b)
+{
+    return strcmp($a["ExhibitorName"], $b["ExhibitorName"]);
+}
+usort($curl_response, "cmp");
 
 echo $curl_response;
 
