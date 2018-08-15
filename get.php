@@ -44,5 +44,16 @@ foreach ($decoded as $item) {
     
 }
 
+usort($sponsorItems, 'sortByName');
+
+function sortByName($a, $b)
+{
+    $a = $a['ExhibitorName'];
+    $b = $b['ExhibitorName'];
+
+    if ($a == $b) return 0;
+    return ($a < $b) ? -1 : 1;
+}
+
 echo json_encode($sponsorItems);
 ?>
