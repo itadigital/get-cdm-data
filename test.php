@@ -33,7 +33,7 @@ foreach($decoded as $exh){
 
 $orderby = "ExhibitorName";
 
-array_multisort($sortArray[$orderby],SORT_ASC,SORT_NATURAL,$decoded); 
+array_multisort($sortArray[$orderby],SORT_ASC,SORT_NATURAL$decoded); 
 
 var_dump($decoded); 
 
