@@ -25,7 +25,7 @@ function cmp($a, $b)
 }
 usort($decoded, "cmp");
 
-echo $decoded;
+var_dump($decoded);
 
 $sponsorItems = array();
 
