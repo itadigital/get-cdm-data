@@ -14,19 +14,18 @@ if ($curl_response === false) {
 }
 curl_close($curl);
 
-foreach ($curl_response as $key => $row)
-{
-    $vc_array_name[$key] = $row['ExhibitorName'];
-}
-array_multisort($vc_array_name, SORT_ASC, $curl_response);
-
-echo $curl_response;
-
 $decoded = json_decode($curl_response,true);
 if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
     die('error occured: ' . $decoded->response->errormessage);
 }
 
+function cmp($a, $b)
+{
+    return strcmp($a["ExhibitorName"], $b["ExhibitorName"]);
+}
+usort($decoded, "cmp");
+
+echo $decoded;
 
 $sponsorItems = array();
 
