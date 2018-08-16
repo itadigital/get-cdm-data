@@ -19,24 +19,6 @@ if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') 
     die('error occured: ' . $decoded->response->errormessage);
 }
 
-
-$sortArray = array(); 
-
-foreach($decoded as $exh){ 
-    foreach($exh as $key=>$value){ 
-        if(!isset($sortArray[$key])){ 
-            $sortArray[$key] = array(); 
-        } 
-        $sortArray[$key][] = $value; 
-    } 
-} 
-
-$orderby = "ExhibitorName";
-
-array_multisort($sortArray[$orderby],SORT_ASC,$decoded); 
-
-$sponsorItems = array();
-
 foreach ($decoded as $item) {
     
     $myObj = array(
@@ -57,7 +39,7 @@ foreach ($decoded as $item) {
         $myObj['ExhibitorBooth'] = $item['Booths'][0]['BoothNumber'];
     }
 
-    $sponsorItems[$item['ExhibitorID']] = $myObj;
+    $sponsorItems[] = $myObj;
     
 }
 

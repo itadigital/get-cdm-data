@@ -39,7 +39,6 @@ foreach ($decoded as $item) {
         $myObj['ExhibitorBooth'] = $item['Booths'][0]['BoothNumber'];
     }
 
-    //$sponsorItems[$item['ExhibitorID']] = $myObj;
     $sponsorItems[] = $myObj;
     
 }
